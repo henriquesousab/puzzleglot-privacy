@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Política de Privacidade — PuzzleGlot</title>
+  <link rel="icon" type="image/png" href="../icon.png">
+  <style>
+    :root {
+      --primary: #d97706;
+      --primary-dark: #b45309;
+      --secondary: #10b981;
+      --secondary-dark: #059669;
+      --accent-pink: #ec4899;
+      --accent-blue: #0284c7;
+      --text-main: #1f2937;
+      --text-muted: #6b7280;
+      --card-bg: #ffffff;
+      --card-border: #fde68a;
+      --card-shadow: 0 12px 28px -6px rgba(180, 83, 9, 0.12), 0 4px 10px -2px rgba(180, 83, 9, 0.06);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.65;
+      color: var(--text-main);
+      background-color: #fef3c7;
+      background-image: url('../puzzle_pattern.svg');
+      background-repeat: repeat;
+      background-size: 100px 100px;
+      margin: 0;
+      padding: 30px 16px 60px 16px;
+    }
+
+    .main-wrapper {
+      max-width: 840px;
+      margin: 0 auto;
+    }
+
+    /* Header com Logo oficial */
+    .header-card {
+      text-align: center;
+      margin-bottom: 24px;
+      padding: 20px 16px;
+    }
+
+    .game-logo {
+      max-width: 310px;
+      width: 85%;
+      height: auto;
+      filter: drop-shadow(0 10px 15px rgba(180, 83, 9, 0.25));
+      transition: transform 0.25s ease;
+    }
+
+    .game-logo:hover {
+      transform: scale(1.03);
+    }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #fefce8;
+      border: 1.5px solid #fde047;
+      color: #b45309;
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      margin-top: 14px;
+      box-shadow: 0 2px 5px rgba(180, 83, 9, 0.08);
+    }
+
+    /* Cartão Principal */
+    .content-card {
+      background: var(--card-bg);
+      border-radius: 24px;
+      border: 2px solid var(--card-border);
+      box-shadow: var(--card-shadow);
+      padding: 44px 36px;
+    }
+
+    @media (max-width: 600px) {
+      .content-card {
+        padding: 28px 20px;
+        border-radius: 18px;
+      }
+    }
+
+    h1 {
+      color: #92400e;
+      font-size: 1.85rem;
+      font-weight: 800;
+      margin-top: 0;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .updated-date {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 2px dashed #fef08a;
+    }
+
+    h2 {
+      color: #b45309;
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-top: 36px;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    h3 {
+      color: #374151;
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-top: 18px;
+      margin-bottom: 8px;
+    }
+
+    p, li {
+      color: #374151;
+      font-size: 0.98rem;
+    }
+
+    ul {
+      padding-left: 22px;
+      margin-top: 8px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    /* Destaques e Boxes com o visual do jogo */
+    .highlight-card {
+      background: #f0fdf4;
+      border: 2px solid #86efac;
+      border-radius: 16px;
+      padding: 18px 20px;
+      margin: 22px 0;
+      box-shadow: 0 4px 6px rgba(16, 185, 129, 0.05);
+    }
+
+    .highlight-card strong {
+      color: #065f46;
+      font-size: 1.05rem;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .code-tag {
+      background: #fef3c7;
+      border: 1px solid #fde68a;
+      color: #92400e;
+      padding: 2px 7px;
+      border-radius: 6px;
+      font-family: monospace;
+      font-size: 0.9em;
+      font-weight: 600;
+    }
+
+    a {
+      color: #059669;
+      font-weight: 600;
+      text-decoration: underline;
+    }
+
+    a:hover {
+      color: #047857;
+    }
+
+    /* Botão de Ação / Contato */
+    .contact-box {
+      background: #fffbeb;
+      border: 2px solid #fde047;
+      border-radius: 18px;
+      padding: 22px;
+      margin-top: 30px;
+    }
+
+    .footer-text {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #78350f;
+      margin-top: 32px;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="main-wrapper">
+    <!-- Cabeçalho com o Logo 3D Oficial do PuzzleGlot -->
+    <header class="header-card">
+      <img src="../logo.png" alt="PuzzleGlot - Arcade de Vocabulário em Inglês" class="game-logo">
+      <div>
+        <span class="badge-pill">
+          <span>🛡️</span> Documento Oficial de Privacidade
+        </span>
+      </div>
+    </header>
+
+    <!-- Conteúdo da Política de Privacidade -->
+    <main class="content-card">
+      <h1>Política de Privacidade</h1>
+      <div class="updated-date">Última atualização: 17 de novembro de 2026</div>
+
+      <p>A sua privacidade é prioridade absoluta no <strong>PuzzleGlot</strong>. Esta Política de Privacidade descreve de forma clara e transparente como o aplicativo/jogo ("nós", "nosso" ou "aplicativo"), desenvolvido por <strong>Henrique</strong>, coleta, utiliza e protege suas informações durante a sua experiência de aprendizado e diversão com nossos mini-games arcade.</p>
+
+      <p>Este documento cumpre integralmente as exigências da <strong>Google Play Store</strong>, a <strong>Lei Geral de Proteção de Dados (LGPD - Lei nº 13.709/2018)</strong> e o <strong>Regulamento Geral sobre a Proteção de Dados (GDPR)</strong>.</p>
+
+      <h2><span>1.</span> Informações que Coletamos</h2>
+      <h3>1.1. Dados Fornecidos Voluntariamente</h3>
+      <p>Caso você utilize a funcionalidade de login ou salvamento na nuvem (via Firebase Authentication / Google Sign-In), armazenamos de forma segura seu nome público, e-mail e identificador de usuário exclusivo para sincronizar suas conquistas, pontuações dos mini-games (Fruit Merge, Crosswords, Word Invaders) e vocabulário aprendido entre dispositivos.</p>
+
+      <h3>1.2. Dados Coletados Automaticamente</h3>
+      <ul>
+        <li><strong>Identificadores de Publicidade:</strong> O jogo exibe anúncios através do <strong>Google AdMob</strong>, que utiliza o Identificador de Publicidade do Google (AAID) para veiculação de anúncios e prevenção de fraudes.</li>
+        <li><strong>Desempenho e Diagnóstico:</strong> Informações anônimas sobre versão do sistema Android e falhas do app para garantir que os jogos rodem com alta taxa de quadros e estabilidade.</li>
+      </ul>
+
+      <h2><span>2.</span> Permissões no Celular</h2>
+      <ul>
+        <li><span class="code-tag">INTERNET</span>: Necessária para carregar anúncios do AdMob, sincronizar dados de nuvem e baixar recursos sonoros.</li>
+        <li><span class="code-tag">VIBRATE</span>: Utilizada para o feedback tátil (háptico) ao encaixar peças de quebra-cabeça, combinar frutas e interagir nos jogos.</li>
+        <li><span class="code-tag">POST_NOTIFICATIONS</span>: Usada opcionalmente para enviar lembretes diários de estudo e avisar sobre novas conquistas. Você pode desativar essa opção a qualquer momento nas configurações do seu celular.</li>
+      </ul>
+
+      <h2><span>3.</span> Serviços de Parceiros Terceirizados</h2>
+      <p>Utilizamos tecnologias confiáveis que seguem padrões internacionais de segurança:</p>
+      <ul>
+        <li><strong>Google AdMob (Google LLC):</strong> Exibição de anúncios no aplicativo.
+          <br><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Política de Privacidade do Google</a>
+        </li>
+        <li><strong>Google Firebase (Google LLC):</strong> Armazenamento e sincronização em nuvem segura.
+          <br><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Privacidade e Segurança no Firebase</a>
+        </li>
+        <li><strong>Google Play Services:</strong> Conectividade e suporte básico do sistema operacional Android.</li>
+      </ul>
+
+      <h2><span>4.</span> Exclusão de Conta e Seus Direitos (LGPD / GDPR)</h2>
+      <p>Você tem controle total sobre os seus dados. Pode solicitar a exclusão de todas as informações associadas à sua conta a qualquer momento:</p>
+
+      <div class="highlight-card">
+        <strong>🗑️ Como solicitar a exclusão de dados:</strong>
+        Para excluir permanentemente sua conta, recordes e dados de vocabulário, envie um e-mail com o assunto <em>"Exclusão de Conta - PuzzleGlot"</em> para <a href="mailto:henriquesousab@gmail.com">henriquesousab@gmail.com</a>. Todos os seus dados serão apagados definitivamente em até 15 dias úteis.
+      </div>
+
+      <h2><span>5.</span> Privacidade de Crianças (COPPA)</h2>
+      <p>O PuzzleGlot não é direcionado intencionalmente a menores de 13 anos e não coleta conscientemente informações de crianças sem o consentimento dos pais ou responsáveis. Se identificarmos qualquer coleta inadvertida, os dados serão prontamente removidos.</p>
+
+      <h2><span>6.</span> Contato do Desenvolvedor</h2>
+      <div class="contact-box">
+        <p style="margin: 0 0 6px 0;"><strong>Desenvolvedor:</strong> Henrique</p>
+        <p style="margin: 0 0 6px 0;"><strong>Jogo:</strong> PuzzleGlot (<code>com.henrique.puzzleglot</code>)</p>
+        <p style="margin: 0;"><strong>E-mail de Suporte:</strong> <a href="mailto:henriquesousab@gmail.com">henriquesousab@gmail.com</a></p>
+      </div>
+
+      <div class="footer-text">
+        © 2026 PuzzleGlot • Todos os direitos reservados.
+      </div>
+    </main>
+  </div>
+
+</body>
+</html>

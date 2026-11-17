@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
+  <defs>
+    <filter id="puzzleShine" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="1" stdDeviation="0.5" flood-color="#b45309" flood-opacity="0.12" />
+    </filter>
+  </defs>
+  <!-- Background base -->
+  <rect width="120" height="120" fill="#fef3c7" />
+  
+  <!-- Piece 1 (Top-Left): Cream tone -->
+  <path d="M 0 0 L 20 0 C 23 0, 20 4, 22 7.5 C 24 11.5, 36 11.5, 38 7.5 C 40 4, 37 0, 40 0 L 60 0 L 60 20 C 60 23, 56 20, 52.5 22 C 48.5 24, 48.5 36, 52.5 38 C 56 40, 60 37, 60 40 L 60 60 L 40 60 C 37 60, 40 64, 38 67.5 C 36 71.5, 24 71.5, 22 67.5 C 20 64, 23 60, 20 60 L 0 60 L 0 40 C 0 37, 4 40, 7.5 38 C 11.5 36, 11.5 24, 7.5 22 C 4 20, 0 23, 0 20 L 0 0 Z" fill="#fef3c7" stroke="rgba(217, 119, 6, 0.24)" stroke-width="1.2" stroke-linejoin="round" />
+  
+  <!-- Piece 2 (Top-Right): Amber tone (matching the yellow checkered tile) -->
+  <path d="M 60 0 L 80 0 C 83 0, 80 -4, 82 -7.5 C 84 -11.5, 96 -11.5, 98 -7.5 C 100 -4, 97 0, 100 0 L 120 0 L 120 20 C 120 23, 124 20, 127.5 22 C 131.5 24, 131.5 36, 127.5 38 C 124 40, 120 37, 120 40 L 120 60 L 100 60 C 97 60, 100 56, 98 52.5 C 96 48.5, 84 48.5, 82 52.5 C 80 56, 83 60, 80 60 L 60 60 L 60 40 C 60 37, 56 40, 52.5 38 C 48.5 36, 48.5 24, 52.5 22 C 56 20, 60 23, 60 20 L 60 0 Z" fill="#fde68a" fill-opacity="0.65" stroke="rgba(217, 119, 6, 0.24)" stroke-width="1.2" stroke-linejoin="round" />
+  
+  <!-- Piece 3 (Bottom-Left): Amber tone (matching the yellow checkered tile) -->
+  <path d="M 0 60 L 20 60 C 23 60, 20 64, 22 67.5 C 24 71.5, 36 71.5, 38 67.5 C 40 64, 37 60, 40 60 L 60 60 L 60 80 C 60 83, 64 80, 67.5 82 C 71.5 84, 71.5 96, 67.5 98 C 64 100, 60 97, 60 100 L 60 120 L 40 120 C 37 120, 40 124, 38 127.5 C 36 131.5, 24 131.5, 22 127.5 C 20 124, 23 120, 20 120 L 0 120 L 0 100 C 0 97, -4 100, -7.5 98 C -11.5 96, -11.5 84, -7.5 82 C -4 80, 0 83, 0 80 L 0 60 Z" fill="#fde68a" fill-opacity="0.65" stroke="rgba(217, 119, 6, 0.24)" stroke-width="1.2" stroke-linejoin="round" />
+  
+  <!-- Piece 4 (Bottom-Right): Cream tone -->
+  <path d="M 60 60 L 80 60 C 83 60, 80 56, 82 52.5 C 84 48.5, 96 48.5, 98 52.5 C 100 56, 97 60, 100 60 L 120 60 L 120 80 C 120 83, 116 80, 112.5 82 C 108.5 84, 108.5 96, 112.5 98 C 116 100, 120 97, 120 100 L 120 120 L 100 120 C 97 120, 100 116, 98 112.5 C 96 108.5, 84 108.5, 82 112.5 C 80 116, 83 120, 80 120 L 60 120 L 60 100 C 60 97, 64 100, 67.5 98 C 71.5 96, 71.5 84, 67.5 82 C 64 80, 60 83, 60 80 L 60 60 Z" fill="#fef3c7" stroke="rgba(217, 119, 6, 0.24)" stroke-width="1.2" stroke-linejoin="round" />
+</svg>
