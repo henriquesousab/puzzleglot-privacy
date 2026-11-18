@@ -305,8 +305,14 @@
         statusMessage.textContent = "Solicitação registrada. A exclusão será concluída em até 30 dias.";
         form.reset();
       } catch (error) {
-        statusMessage.textContent = "Não foi possível registrar a solicitação. Confira a configuração do Firebase ou use o e-mail de contingência.";
-        console.error("Deletion request failed:", error);
+        const code = error?.code || "erro-desconhecido";
+        const guidance = code === "permission-denied"
+          ? "As regras do Firestore ainda não autorizam criar pedidos em deletion_requests. Publique as regras de segurança desse banco."
+          : code === "not-found"
+            ? "O banco de dados configurado não foi encontrado no projeto Firebase."
+            : (error?.message || "Confira a configuração do Firebase.");
+        statusMessage.textContent = "Falha ao registrar (" + code + "): " + guidance;
+        console.error("Deletion request failed:", code, error?.message, error);
       } finally {
         submitButton.disabled = false;
       }
