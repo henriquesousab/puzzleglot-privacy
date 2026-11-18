@@ -1,0 +1,29 @@
+// Integre este match dentro de:
+// service cloud.firestore { match /databases/{database}/documents { ... } }
+// Não substitua as regras existentes: mantenha também o default-deny global.
+
+match /deletion_requests/{requestId} {
+  allow create: if request.auth != null
+    && request.auth.token.email_verified == true
+    && request.resource.data.keys().hasAll([
+      'uid',
+      'email',
+      'requestedAt',
+      'status'
+    ])
+    && request.resource.data.keys().hasOnly([
+      'uid',
+      'email',
+      'requestedAt',
+      'status'
+    ])
+    && request.resource.data.uid is string
+    && request.resource.data.uid == request.auth.uid
+    && request.resource.data.email is string
+    && request.resource.data.email == request.auth.token.email
+    && request.resource.data.requestedAt == request.time
+    && request.resource.data.status == 'pending';
+
+  // Os pedidos não podem ser consultados nem alterados pelos clientes.
+  allow read, update, delete: if false;
+}

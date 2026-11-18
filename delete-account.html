@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exclusão de Conta — PuzzleGlot</title>
+  <link rel="icon" type="image/png" href="icon.png">
+  <style>
+    :root {
+      --primary: #d97706;
+      --primary-dark: #b45309;
+      --secondary: #10b981;
+      --secondary-dark: #059669;
+      --accent-pink: #ec4899;
+      --accent-blue: #0284c7;
+      --text-main: #1f2937;
+      --text-muted: #6b7280;
+      --card-bg: #ffffff;
+      --card-border: #fde68a;
+      --card-shadow: 0 12px 28px -6px rgba(180, 83, 9, 0.12), 0 4px 10px -2px rgba(180, 83, 9, 0.06);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.65;
+      color: var(--text-main);
+      background-color: #fef3c7;
+      background-image: url('puzzle_pattern.svg');
+      background-repeat: repeat;
+      background-size: 100px 100px;
+      margin: 0;
+      padding: 30px 16px 60px 16px;
+    }
+
+    .main-wrapper { max-width: 840px; margin: 0 auto; }
+    .header-card { text-align: center; margin-bottom: 24px; padding: 20px 16px; }
+    .game-logo {
+      max-width: 310px; width: 85%; height: auto;
+      filter: drop-shadow(0 10px 15px rgba(180, 83, 9, 0.25));
+      transition: transform 0.25s ease;
+    }
+    .game-logo:hover { transform: scale(1.03); }
+    .badge-pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: #fefce8; border: 1.5px solid #fde047; color: #b45309;
+      font-size: 0.85rem; font-weight: 700; padding: 6px 14px;
+      border-radius: 9999px; margin-top: 14px;
+      box-shadow: 0 2px 5px rgba(180, 83, 9, 0.08);
+    }
+    .content-card {
+      background: var(--card-bg); border-radius: 24px; border: 2px solid var(--card-border);
+      box-shadow: var(--card-shadow); padding: 44px 36px;
+    }
+    @media (max-width: 600px) {
+      .content-card { padding: 28px 20px; border-radius: 18px; }
+    }
+    h1 {
+      color: #92400e; font-size: 1.85rem; font-weight: 800; margin-top: 0; margin-bottom: 8px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .updated-date {
+      color: var(--text-muted); font-size: 0.9rem; margin-bottom: 24px;
+      padding-bottom: 16px; border-bottom: 2px dashed #fef08a;
+    }
+    h2 {
+      color: #b45309; font-size: 1.3rem; font-weight: 700; margin-top: 36px; margin-bottom: 14px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    h3 { color: #374151; font-size: 1.05rem; font-weight: 700; margin-top: 18px; margin-bottom: 8px; }
+    p, li { color: #374151; font-size: 0.98rem; }
+    ul, ol { padding-left: 22px; margin-top: 8px; }
+    li { margin-bottom: 8px; }
+    .highlight-card {
+      background: #f0fdf4; border: 2px solid #86efac; border-radius: 16px;
+      padding: 18px 20px; margin: 22px 0;
+      box-shadow: 0 4px 6px rgba(16, 185, 129, 0.05);
+    }
+    .highlight-card strong {
+      color: #065f46; font-size: 1.05rem; display: block; margin-bottom: 6px;
+    }
+    .code-tag {
+      background: #fef3c7; border: 1px solid #fde68a; color: #92400e;
+      padding: 2px 7px; border-radius: 6px; font-family: monospace; font-size: 0.9em; font-weight: 600;
+    }
+    a { color: #059669; font-weight: 600; text-decoration: underline; }
+    a:hover { color: #047857; }
+    .contact-box {
+      background: #fffbeb; border: 2px solid #fde047; border-radius: 18px;
+      padding: 22px; margin-top: 30px;
+    }
+    .footer-text {
+      text-align: center; font-size: 0.85rem; color: #78350f;
+      margin-top: 32px; font-weight: 500;
+    }
+    .auth-panel {
+      background: #fffbeb; border: 2px solid #fde047; border-radius: 18px;
+      padding: 22px; margin: 22px 0;
+    }
+    .button {
+      display: inline-block; border: 0; border-radius: 12px; padding: 12px 18px;
+      background: var(--primary); color: #fff; font: inherit; font-weight: 700;
+      text-decoration: none; cursor: pointer; box-shadow: 0 4px 8px rgba(180, 83, 9, 0.16);
+    }
+    .button:hover { background: var(--primary-dark); color: #fff; }
+    .button.secondary { background: var(--secondary); }
+    .button.secondary:hover { background: var(--secondary-dark); }
+    .button:disabled { opacity: 0.6; cursor: wait; }
+    .form-field { display: block; margin: 16px 0; }
+    .form-field label { display: block; color: #374151; font-weight: 700; margin-bottom: 6px; }
+    .form-field input[type="text"] {
+      width: 100%; border: 1.5px solid #d1d5db; border-radius: 10px;
+      padding: 12px; font: inherit; color: var(--text-main);
+    }
+    .check-row { display: flex; align-items: flex-start; gap: 10px; margin: 16px 0; }
+    .check-row input { margin-top: 7px; accent-color: var(--primary); }
+    .status-message { min-height: 1.65em; font-weight: 600; }
+    .user-email { overflow-wrap: anywhere; }
+    [hidden] { display: none !important; }
+  </style>
+</head>
+<body>
+  <div class="main-wrapper">
+    <header class="header-card">
+      <img src="logo.png" alt="PuzzleGlot - Arcade de Vocabulário em Inglês" class="game-logo">
+      <div><span class="badge-pill"><span>🛡️</span> Exclusão segura de conta</span></div>
+    </header>
+
+    <main class="content-card">
+      <h1>Exclusão de Conta</h1>
+      <div class="updated-date">PuzzleGlot — Desenvolvido por Henrique Sousa</div>
+
+      <p>Use esta página para solicitar a exclusão permanente da sua conta PuzzleGlot e dos dados associados na nuvem. A solicitação exige autenticação com a mesma conta Google usada no jogo para confirmar que você é o titular.</p>
+
+      <h2><span>1.</span> Como solicitar</h2>
+      <ol>
+        <li>Toque em <strong>Entrar com Google para verificar identidade</strong> e escolha a mesma conta Google usada no PuzzleGlot.</li>
+        <li>Confira o nome e o e-mail exibidos e confirme que pertencem a você.</li>
+        <li>Digite exatamente <span class="code-tag">EXCLUIR</span> (ou o e-mail autenticado), marque a caixa de ciência e toque em <strong>Confirmar Solicitação de Exclusão</strong>.</li>
+      </ol>
+
+      <section class="auth-panel" aria-label="Verificação e solicitação de exclusão">
+        <div id="signed-out">
+          <p>Entre com o Google para verificar sua identidade antes de solicitar a exclusão.</p>
+          <button class="button" id="sign-in-button" type="button">Entrar com Google para verificar identidade</button>
+        </div>
+
+        <div id="signed-in" hidden>
+          <p><strong>Conta autenticada:</strong><br><span id="user-name"></span><br><span class="user-email" id="user-email"></span></p>
+          <button class="button secondary" id="sign-out-button" type="button">Sair / Trocar conta</button>
+
+          <form id="deletion-form">
+            <div class="form-field">
+              <label for="confirmation">Digite EXCLUIR ou o e-mail autenticado</label>
+              <input id="confirmation" name="confirmation" type="text" autocomplete="off" required>
+            </div>
+            <label class="check-row" for="irreversible">
+              <input id="irreversible" name="irreversible" type="checkbox" required>
+              <span>Entendo que a exclusão é irreversível e que não poderei recuperar a conta ou o progresso após a conclusão.</span>
+            </label>
+            <button class="button" id="submit-button" type="submit">Confirmar Solicitação de Exclusão</button>
+          </form>
+          <p id="status-message" class="status-message" role="status" aria-live="polite"></p>
+        </div>
+      </section>
+
+      <div class="highlight-card">
+        <strong>🗑️ Alternativa por e-mail</strong>
+        Se preferir, envie a confirmação a partir do endereço cadastrado: <a id="fallback-email" href="mailto:henriquesousab@gmail.com?subject=Exclus%C3%A3o%20de%20Conta%20-%20PuzzleGlot">abrir e-mail de solicitação</a>. Informe o e-mail associado à conta PuzzleGlot. Esta opção de contingência também requer envio pelo titular da conta.
+      </div>
+
+      <h2><span>2.</span> Dados excluídos e mantidos</h2>
+      <h3>Dados excluídos permanentemente</h3>
+      <ul>
+        <li>A conta de autenticação do Firebase, incluindo UID, nome, e-mail e foto de perfil vinculados.</li>
+        <li>O progresso salvo na nuvem, incluindo recordes, dicionário de vocabulário salvo, conquistas e ofensivas.</li>
+      </ul>
+
+      <h3>Dados armazenados apenas no dispositivo</h3>
+      <p>Dados que existam somente no armazenamento local do dispositivo são removidos quando você desinstala o aplicativo ou limpa os dados do PuzzleGlot nas configurações do Android. Eles não são apagados por esta solicitação na nuvem.</p>
+
+      <h3>Prazo de exclusão</h3>
+      <p>A solicitação é registrada para processamento. A exclusão definitiva dos dados da conta e da nuvem ocorre em até <strong>30 dias</strong> após a confirmação da solicitação. Não há retenção adicional desses dados após esse prazo.</p>
+
+      <div class="contact-box">
+        <p style="margin: 0 0 6px 0;"><strong>Desenvolvedor:</strong> Henrique Sousa</p>
+        <p style="margin: 0 0 6px 0;"><strong>Aplicativo:</strong> PuzzleGlot (<code>com.henrique.puzzleglot</code>)</p>
+        <p style="margin: 0;"><strong>Contato:</strong> <a href="mailto:henriquesousab@gmail.com">henriquesousab@gmail.com</a></p>
+      </div>
+
+      <div class="footer-text">
+        <a href="privacy/">Política de Privacidade</a><br>
+        © 2026 PuzzleGlot • Todos os direitos reservados.
+      </div>
+    </main>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+    const firebaseConfig = {
+      // SUBSTITUIR PELAS CHAVES DO PROJETO FIREBASE
+      apiKey: "SUBSTITUIR_PELA_API_KEY",
+      authDomain: "halogen-height-85gvv.firebaseapp.com",
+      projectId: "halogen-height-85gvv",
+      storageBucket: "halogen-height-85gvv.appspot.com",
+      messagingSenderId: "SUBSTITUIR_PELAS_CHAVES_DO_PROJETO_FIREBASE",
+      appId: "SUBSTITUIR_PELAS_CHAVES_DO_PROJETO_FIREBASE"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+    const provider = new GoogleAuthProvider();
+    provider.setCustomParameters({ prompt: "select_account" });
+
+    const signedOut = document.getElementById("signed-out");
+    const signedIn = document.getElementById("signed-in");
+    const signInButton = document.getElementById("sign-in-button");
+    const signOutButton = document.getElementById("sign-out-button");
+    const form = document.getElementById("deletion-form");
+    const submitButton = document.getElementById("submit-button");
+    const statusMessage = document.getElementById("status-message");
+    const confirmation = document.getElementById("confirmation");
+    const irreversible = document.getElementById("irreversible");
+
+    document.getElementById("fallback-email").addEventListener("click", (event) => {
+      const user = auth.currentUser;
+      if (!user?.email) return;
+      const subject = encodeURIComponent("Exclusão de Conta - PuzzleGlot");
+      const body = encodeURIComponent("Solicito a exclusão da minha conta PuzzleGlot e dos dados associados.\n\nE-mail da conta: " + user.email);
+      event.currentTarget.href = "mailto:henriquesousab@gmail.com?subject=" + subject + "&body=" + body;
+    });
+
+    signInButton.addEventListener("click", async () => {
+      statusMessage.textContent = "";
+      signInButton.disabled = true;
+      try {
+        await signInWithPopup(auth, provider);
+      } catch (error) {
+        statusMessage.textContent = "Não foi possível entrar com Google. Tente novamente ou use o contato por e-mail.";
+        console.error("Google sign-in failed:", error);
+      } finally {
+        signInButton.disabled = false;
+      }
+    });
+
+    signOutButton.addEventListener("click", async () => {
+      await signOut(auth);
+      confirmation.value = "";
+      irreversible.checked = false;
+      statusMessage.textContent = "";
+    });
+
+    onAuthStateChanged(auth, (user) => {
+      signedOut.hidden = Boolean(user);
+      signedIn.hidden = !user;
+      if (user) {
+        document.getElementById("user-name").textContent = user.displayName || "Conta Google";
+        document.getElementById("user-email").textContent = user.email || "E-mail indisponível";
+      } else {
+        document.getElementById("user-name").textContent = "";
+        document.getElementById("user-email").textContent = "";
+      }
+    });
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const user = auth.currentUser;
+      if (!user || !user.email) {
+        statusMessage.textContent = "Entre com a conta Google que deseja excluir.";
+        return;
+      }
+      const typedValue = confirmation.value.trim();
+      if (typedValue !== "EXCLUIR" && typedValue.toLowerCase() !== user.email.toLowerCase()) {
+        statusMessage.textContent = "Digite EXCLUIR ou o e-mail da conta autenticada.";
+        confirmation.focus();
+        return;
+      }
+      if (!irreversible.checked) {
+        statusMessage.textContent = "Marque a caixa de ciência para continuar.";
+        return;
+      }
+
+      submitButton.disabled = true;
+      statusMessage.textContent = "Registrando sua solicitação…";
+      try {
+        await addDoc(collection(db, "deletion_requests"), {
+          uid: user.uid,
+          email: user.email,
+          requestedAt: serverTimestamp(),
+          status: "pending"
+        });
+        statusMessage.textContent = "Solicitação registrada. A exclusão será concluída em até 30 dias.";
+        form.reset();
+      } catch (error) {
+        statusMessage.textContent = "Não foi possível registrar a solicitação. Confira a configuração do Firebase ou use o e-mail de contingência.";
+        console.error("Deletion request failed:", error);
+      } finally {
+        submitButton.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
