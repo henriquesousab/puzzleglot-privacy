@@ -300,7 +300,12 @@
           uid: user.uid,
           email: user.email,
           requestedAt: serverTimestamp(),
-          status: "pending"
+          status: "pending",
+          to: "henriquesousab@gmail.com",
+          message: {
+            subject: "Solicitação de exclusão de conta - PuzzleGlot",
+            text: "Nova solicitação de exclusão de conta PuzzleGlot.\\nUID: " + user.uid + "\\nE-mail: " + user.email
+          }
         });
         statusMessage.textContent = "Solicitação registrada. A exclusão será concluída em até 30 dias.";
         form.reset();
