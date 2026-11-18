@@ -243,8 +243,14 @@
       try {
         await signInWithPopup(auth, provider);
       } catch (error) {
-        authStatus.textContent = "Não foi possível entrar com Google. Confira se este domínio está autorizado no Firebase Authentication e tente novamente.";
-        console.error("Google sign-in failed:", error.code, error.message);
+        const code = error?.code || "erro-desconhecido";
+        const guidance = code === "auth/unauthorized-domain"
+          ? "Adicione henriquesousab.github.io em Firebase Authentication > Settings > Authorized domains."
+          : code === "auth/operation-not-allowed"
+            ? "Ative o provedor Google em Firebase Authentication > Sign-in method."
+            : (error?.message || "Tente novamente.");
+        authStatus.textContent = "Falha no login (" + code + "): " + guidance;
+        console.error("Google sign-in failed:", code, error?.message);
       } finally {
         signInButton.disabled = false;
       }
