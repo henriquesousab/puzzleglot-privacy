@@ -144,6 +144,7 @@
         <div id="signed-out">
           <p>Entre com o Google para verificar sua identidade antes de solicitar a exclusão.</p>
           <button class="button" id="sign-in-button" type="button">Entrar com Google para verificar identidade</button>
+          <p id="auth-status" class="status-message" role="status" aria-live="polite"></p>
         </div>
 
         <div id="signed-in" hidden>
@@ -202,18 +203,18 @@
     import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
     const firebaseConfig = {
-      // SUBSTITUIR PELAS CHAVES DO PROJETO FIREBASE
-      apiKey: "SUBSTITUIR_PELA_API_KEY",
+      // Configuração do projeto Firebase halogen-height-85gvv.
+      apiKey: "AIzaSyCtfXAhhsQA0F9cM2zano_qVYZ1i3jqg9M",
       authDomain: "halogen-height-85gvv.firebaseapp.com",
       projectId: "halogen-height-85gvv",
-      storageBucket: "halogen-height-85gvv.appspot.com",
-      messagingSenderId: "SUBSTITUIR_PELAS_CHAVES_DO_PROJETO_FIREBASE",
-      appId: "SUBSTITUIR_PELAS_CHAVES_DO_PROJETO_FIREBASE"
+      storageBucket: "halogen-height-85gvv.firebasestorage.app",
+      messagingSenderId: "175150322433",
+      appId: "1:175150322433:web:2ab41f3b29ea7a65024100"
     };
 
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
-    const db = getFirestore(app);
+    const db = getFirestore(app, "ai-studio-fruitvocabmerge-3eee0cc0-a7cf-4d3f-a7be-1075597607d2");
     const provider = new GoogleAuthProvider();
     provider.setCustomParameters({ prompt: "select_account" });
 
@@ -224,6 +225,7 @@
     const form = document.getElementById("deletion-form");
     const submitButton = document.getElementById("submit-button");
     const statusMessage = document.getElementById("status-message");
+    const authStatus = document.getElementById("auth-status");
     const confirmation = document.getElementById("confirmation");
     const irreversible = document.getElementById("irreversible");
 
@@ -236,13 +238,13 @@
     });
 
     signInButton.addEventListener("click", async () => {
-      statusMessage.textContent = "";
+      authStatus.textContent = "";
       signInButton.disabled = true;
       try {
         await signInWithPopup(auth, provider);
       } catch (error) {
-        statusMessage.textContent = "Não foi possível entrar com Google. Tente novamente ou use o contato por e-mail.";
-        console.error("Google sign-in failed:", error);
+        authStatus.textContent = "Não foi possível entrar com Google. Confira se este domínio está autorizado no Firebase Authentication e tente novamente.";
+        console.error("Google sign-in failed:", error.code, error.message);
       } finally {
         signInButton.disabled = false;
       }
